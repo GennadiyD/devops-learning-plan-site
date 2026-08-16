@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Three-week DevOps learning plan for Kubernetes, AWS IaC, observability and AIOps.">
+<title>3-Week DevOps Learning Plan</title>
+<style>
+:root{--bg:#f4f7f6;--card:#fff;--text:#1d2925;--muted:#64716c;--green:#087f5b;--dark:#056348;--soft:#e7f6f0;--border:#dce6e2;--opt:#fff8e6;--optborder:#d59c18}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+.page{width:min(980px,calc(100% - 32px));margin:36px auto 64px}
+.hero{background:linear-gradient(135deg,#0a6e52,#0b8e68);color:#fff;padding:34px;border-radius:18px;box-shadow:0 8px 24px rgba(20,46,38,.08)}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.1;margin:0 0 10px} .hero p{color:#edf9f5;max-width:780px;margin:7px 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px} .stat{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);padding:12px;border-radius:12px}
+.stat strong{display:block;font-size:20px} .stat span{font-size:13px;color:#dff4ed}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.button{border:0;border-radius:9px;background:var(--green);color:#fff;text-decoration:none;padding:10px 14px;font:inherit;font-weight:700;cursor:pointer}
+.button.secondary{background:#fff;color:var(--dark);border:1px solid var(--border)}
+.progress{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin:18px 0 26px}
+.progress-row{display:flex;justify-content:space-between;gap:12px;margin-bottom:9px} .track{height:12px;border-radius:999px;background:#e5ece9;overflow:hidden} #fill{height:100%;width:0;background:var(--green);transition:.2s}
+.week{margin-top:28px} .week-title{display:flex;justify-content:space-between;align-items:end;gap:12px;border-bottom:2px solid var(--green);padding-bottom:8px}
+.week-title h2{margin:0;font-size:25px} .week-title span,.meta{font-size:14px;color:var(--muted)}
+.goal{background:var(--soft);border-radius:10px;padding:11px 14px;margin:12px 0 14px}
+.session{background:var(--card);border:1px solid var(--border);border-left:5px solid var(--green);border-radius:12px;margin:12px 0;padding:17px 18px}
+.session.optional{background:var(--opt);border-left-color:var(--optborder)} .session-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.checkline{display:flex;gap:10px;align-items:flex-start;cursor:pointer} .checkline input{width:19px;height:19px;margin-top:3px;accent-color:var(--green)}
+.badge{white-space:nowrap;font-size:12px;font-weight:700;background:var(--soft);color:var(--dark);border-radius:999px;padding:4px 8px} .optional .badge{background:#ffe8a8;color:#725100}
+.meta{margin:4px 0 8px 30px} .session ul{margin:8px 0 10px 46px;padding-left:17px}
+.search{margin:10px 0 0 30px;padding:10px 12px;background:#f7faf9;border:1px solid var(--border);border-radius:9px} code{background:#e9efed;padding:2px 6px;border-radius:5px;overflow-wrap:anywhere}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0 30px} .mini{border-radius:8px;padding:7px 10px;text-decoration:none;font-size:13px;font-weight:700;border:1px solid var(--border);background:#fff;color:var(--dark);cursor:pointer}
+.deliverable{margin:9px 0 0 30px;font-size:14px} .review{margin-top:28px;background:#fff;border:1px solid var(--border);padding:16px 18px;border-radius:14px}
+footer{color:var(--muted);font-size:13px;margin-top:32px;padding-top:16px;border-top:1px solid var(--border)}
+@media(max-width:700px){.page{width:min(100% - 20px,980px);margin-top:10px}.hero{padding:24px 20px}.stats{grid-template-columns:repeat(2,1fr)}.week-title,.session-head{flex-direction:column;align-items:flex-start}}
+@media print{body{background:#fff}.page{width:100%;margin:0}.toolbar,.copy{display:none!important}.hero,.session{box-shadow:none}}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="hero">
+  <h1>3-Week DevOps Learning Plan</h1>
+  <p><strong>August 17 – September 6, 2026</strong></p>
+  <p>Built for 1–1.5 hour study blocks, 2–3 times per week. Complete the two core sessions each week. Add the optional hands-on session when you have time.</p>
+  <div class="stats">
+    <div class="stat"><strong>3 weeks</strong><span>Focused sprint</span></div>
+    <div class="stat"><strong>6 core</strong><span>Must-do sessions</span></div>
+    <div class="stat"><strong>3 optional</strong><span>Hands-on sessions</span></div>
+    <div class="stat"><strong>8h 15m</strong><span>Core study time</span></div>
+  </div>
+</section>
+
+<div class="toolbar">
+  <a class="button" href="https://skillsetsonline.skillport.com/skillportfe/main.action" target="_blank" rel="noopener noreferrer">Open Skillsets Portal</a>
+  <button class="button secondary" type="button" onclick="window.print()">Print / Save PDF</button>
+  <button class="button secondary" type="button" onclick="resetProgress()">Reset progress</button>
+</div>
+
+<section class="progress">
+  <div class="progress-row"><strong>Your progress</strong><span id="progressText">0 of 9 sessions complete</span></div>
+  <div class="track"><div id="fill"></div></div>
+</section>
+
+
+    <section class="week">
+      <div class="week-title">
+        <h2>Week 1 — Kubernetes Operations</h2><span>Aug 17–23 · Core: Tue/Thu · Optional: Sat</span>
+      </div>
+      <div class="goal"><strong>Weekly outcome:</strong> Strengthen day-to-day Kubernetes administration and create a reusable troubleshooting checklist.</div>
+      
+    <article class="session">
+      <div class="session-head">
+        <label class="checkline">
+          <input class="progress-check" id="w1s1" type="checkbox">
+          <span><strong>Core Session — Advanced Kubernetes operations</strong></span>
+        </label>
+        <span class="badge">Tue Aug 18 · 80 min</span>
+      </div>
+      <div class="meta">Learning + short notes</div>
+      <ul><li>Study scheduling, resource requests/limits, probes, and workload behavior.</li><li>Write down 5 commands or checks you would use during a production incident.</li><li>Reserve the last 10 minutes for a concise summary.</li></ul>
+      
+        <div class="search"><strong>Skillsets search:</strong> <code>Building Advanced Kubernetes Skills</code></div>
+        <div class="links">
+          <button type="button" class="mini copy" data-copy="Building Advanced Kubernetes Skills">Copy search phrase</button>
+          <a class="mini" href="https://www.skillsoft.com/journey/building-advanced-kubernetes-skills-4638674f-f804-4aa1-bb27-29d44a129da3" target="_blank" rel="noopener noreferrer">Public Skillsoft page</a>
+        </div>
+      
+    </article>
+    <article class="session">
+      <div class="session-head">
+        <label class="checkline">
+          <input class="progress-check" id="w1s2" type="checkbox">
+          <span><strong>Core Session — Kubernetes administrator fundamentals</strong></span>
+        </label>
+        <span class="badge">Thu Aug 20 · 80 min</span>
+      </div>
+      <div class="meta">Course review + kubectl practice</div>
+      <ul><li>Focus on Deployments, Services, namespaces, rollout status, events, and logs.</li><li>Practice a troubleshooting sequence: pod → events → logs → service → endpoints.</li><li>Record anything that differs from how your current environment is operated.</li></ul>
+      
+        <div class="search"><strong>Skillsets search:</strong> <code>Kubernetes Fundamentals for Administrators</code></div>
+        <div class="links">
+          <button type="button" class="mini copy" data-copy="Kubernetes Fundamentals for Administrators">Copy search phrase</button>
+          <a class="mini" href="https://www.skillsoft.com/course/kubernetes-administrator-kubernetes-fundamentals-for-administrators-27d0c348-7b24-40db-8564-6fbb76c10e81" target="_blank" rel="noopener noreferrer">Public Skillsoft page</a>
+        </div>
+      
+    </article>
+    <article class="session optional">
+      <div class="session-head">
+        <label class="checkline">
+          <input class="progress-check" id="w1s3" type="checkbox">
+          <span><strong>Optional Session — Build your troubleshooting checklist</strong></span>
+        </label>
+        <span class="badge">Sat Aug 22 · 60 min</span>
+      </div>
+      <div class="meta">Hands-on · no course required</div>
+      <ul><li>Create k8s-troubleshooting.md.</li><li>Include pod health, events, logs, resource pressure, networking, rollout, and rollback checks.</li><li>Test the checklist against one safe/non-production example if available.</li></ul>
+      
+      <div class="deliverable"><strong>Deliverable:</strong> A 1-page Kubernetes incident checklist you can reuse at work.</div>
+    </article>
+    </section>
+    <section class="week">
+      <div class="week-title">
+        <h2>Week 2 — AWS &amp; Infrastructure as Code</h2><span>Aug 24–30 · Core: Tue/Thu · Optional: Sat</span>
+      </div>
+      <div class="goal"><strong>Weekly outcome:</strong> Improve AWS IaC understanding and apply one concrete improvement to Terraform or Ansible.</div>
+      
+    <article class="session">
+      <div class="session-head">
+        <label class="checkline">
+          <input class="progress-check" id="w2s1" type="checkbox">
+          <span><strong>Core Session — AWS Infrastructure as Code, Part 1</strong></span>
+        </label>
+        <span class="badge">Tue Aug 25 · 85 min</span>
+      </div>
+      <div class="meta">Course study</div>
+      <ul><li>Work through the first portion of the AWS IaC course.</li><li>Focus on repeatability, change control, templates/modules, and deployment safety.</li><li>Capture 3 ideas that could improve your current infrastructure workflow.</li></ul>
+      
+        <div class="search"><strong>Skillsets search:</strong> <code>AWS DevOps Engineer Pro 2024: AWS Infrastructure as Code</code></div>
+        <div class="links">
+          <button type="button" class="mini copy" data-copy="AWS DevOps Engineer Pro 2024: AWS Infrastructure as Code">Copy search phrase</button>
+          <a class="mini" href="https://www.skillsoft.com/course/aws-devops-engineer-pro-2024-aws-infrastructure-as-code-f4827cda-16d8-48fe-b86d-304dce36d6ea" target="_blank" rel="noopener noreferrer">Public Skillsoft page</a>
+        </div>
+      
+    </article>
+    <article class="session">
+      <div class="session-head">
+        <label class="checkline">
+          <input class="progress-check" id="w2s2" type="checkbox">
+          <span><strong>Core Session — Finish AWS IaC + connect it to DevOps</strong></span>
+        </label>
+        <span class="badge">Thu Aug 27 · 85 min</span>
+      </div>
+      <div class="meta">Finish course + targeted follow-up</div>
+      <ul><li>Finish the remaining AWS IaC material.</li><li>If time remains, search Practical AWS for DevOps and review the most relevant CI/CD or deployment-automation section.</li><li>Write a short current-state → better-state note for one IaC process.</li></ul>
+      
+        <div class="search"><strong>Skillsets search:</strong> <code>Practical AWS for DevOps</code></div>
+        <div class="links">
+          <button type="button" class="mini copy" data-copy="Practical AWS for DevOps">Copy search phrase</button>
+          <a class="mini" href="https://www.skillsoft.com/course/practical-aws-for-devops-devops-features-services-c8baf818-861d-43d0-a5f2-37ed12ad9b00" target="_blank" rel="noopener noreferrer">Public Skillsoft page</a>
+        </div>
+      
+    </article>
+    <article class="session optional">
+      <div class="session-head">
+        <label class="checkline">
+          <input class="progress-check" id="w2s3" type="checkbox">
+          <span><strong>Optional Session — Improve a real IaC module</strong></span>
+        </label>
+        <span class="badge">Sat Aug 29 · 60 min</span>
+      </div>
+      <div class="meta">Hands-on · Terraform or Ansible</div>
+      <ul><li>Choose one small, low-risk module or role.</li><li>Improve validation, variables/defaults, documentation, idempotency, tagging, or maintainability.</li><li>Run the normal validation/test workflow before considering the change complete.</li></ul>
+      
+      <div class="deliverable"><strong>Deliverable:</strong> One tested improvement or a review-ready patch/commit.</div>
+    </article>
+    </section>
+    <section class="week">
+      <div class="week-title">
+        <h2>Week 3 — Observability &amp; AIOps</h2><span>Aug 31–Sep 6 · Core: Tue/Thu · Optional: Sat</span>
+      </div>
+      <div class="goal"><strong>Weekly outcome:</strong> Improve monitoring signal quality and produce one practical dashboard or alert improvement.</div>
+      
+    <article class="session">
+      <div class="session-head">
+        <label class="checkline">
+          <input class="progress-check" id="w3s1" type="checkbox">
+          <span><strong>Core Session — AIOps &amp; MLOps basics</strong></span>
+        </label>
+        <span class="badge">Tue Sep 1 · 75 min</span>
+      </div>
+      <div class="meta">Concepts + operational use cases</div>
+      <ul><li>Focus on anomaly detection, event correlation, alert-noise reduction, and operational automation.</li><li>Identify where AIOps could help your current monitoring workflow and where it would add unnecessary complexity.</li><li>Write 3 realistic use cases, not generic AI ideas.</li></ul>
+      
+        <div class="search"><strong>Skillsets search:</strong> <code>AIOps &amp; MLOps Basics</code></div>
+        <div class="links">
+          <button type="button" class="mini copy" data-copy="AIOps &amp; MLOps Basics">Copy search phrase</button>
+          <a class="mini" href="https://www.skillsoft.com/course/devops-platforms-and-operations-aiops-mlops-basics-c82a4778-0207-401f-a236-ca96d0c187c8" target="_blank" rel="noopener noreferrer">Public Skillsoft page</a>
+        </div>
+      
+    </article>
+    <article class="session">
+      <div class="session-head">
+        <label class="checkline">
+          <input class="progress-check" id="w3s2" type="checkbox">
+          <span><strong>Core Session — Prometheus &amp; Grafana observability</strong></span>
+        </label>
+        <span class="badge">Thu Sep 3 · 90 min</span>
+      </div>
+      <div class="meta">Choose the content that best matches your current stack</div>
+      <ul><li>Focus on actionable metrics, alert thresholds, labels, dashboard design, and avoiding noisy signals.</li><li>Prefer Prometheus if alerting/metrics collection needs work; prefer Grafana if visualization and dashboards are the bigger gap.</li><li>Write down one alert or dashboard panel you want to improve.</li></ul>
+      
+        <div class="search"><strong>Skillsets search:</strong> <code>Prometheus / Grafana / observability</code></div>
+        <div class="links">
+          <button type="button" class="mini copy" data-copy="Prometheus / Grafana / observability">Copy search phrase</button>
+          <a class="mini" href="https://www.skillsoft.com/course/comprehensive-monitoring-with-prometheus-cd70ec8e-db8c-4805-9a37-2c25609fc60b" target="_blank" rel="noopener noreferrer">Prometheus page</a><a class="mini" href="https://www.skillsoft.com/course/comprehensive-monitoring-with-grafana-e14b8d1a-b40b-40f9-a7b2-d4d3c709e479" target="_blank" rel="noopener noreferrer">Grafana page</a>
+        </div>
+      
+    </article>
+    <article class="session optional">
+      <div class="session-head">
+        <label class="checkline">
+          <input class="progress-check" id="w3s3" type="checkbox">
+          <span><strong>Optional Session — Improve one dashboard or alert</strong></span>
+        </label>
+        <span class="badge">Sat Sep 5 · 60 min</span>
+      </div>
+      <div class="meta">Hands-on · finish the sprint with a practical change</div>
+      <ul><li>Choose one existing dashboard panel or alert rule.</li><li>Make one measurable improvement: clearer signal, better threshold, better labels, more useful context, or less noise.</li><li>Document why the change is better and how you would validate it.</li></ul>
+      
+      <div class="deliverable"><strong>Deliverable:</strong> One revised dashboard panel/alert rule plus a short rationale.</div>
+    </article>
+    </section>
+
+<section class="review">
+  <strong>End-of-plan review — Sep 5 or Sep 6</strong>
+  <p>Keep the three practical outputs: your Kubernetes troubleshooting checklist, your IaC improvement, and your monitoring improvement. Spend 10 minutes deciding which topic deserves a deeper 4–6 week follow-up plan.</p>
+</section>
+
+<footer>
+Skillsets access depends on your organization's login and catalog. Public Skillsoft links are included as references. In the company portal, use the exact search phrase shown for each session.
+</footer>
+</main>
+
+<script>
+const checks=[...document.querySelectorAll('.progress-check')],fill=document.getElementById('fill'),text=document.getElementById('progressText'),key='devops-plan-2026-08';
+function update(){const n=checks.filter(x=>x.checked).length,p=Math.round(n/checks.length*100);fill.style.width=p+'%';text.textContent=`${n} of ${checks.length} sessions complete (${p}%)`;}
+function save(){const s={};checks.forEach(x=>s[x.id]=x.checked);localStorage.setItem(key,JSON.stringify(s));update();}
+function load(){let s={};try{s=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}checks.forEach(x=>x.checked=!!s[x.id]);update();}
+function resetProgress(){if(confirm('Reset all session checkboxes?')){localStorage.removeItem(key);checks.forEach(x=>x.checked=false);update();}}
+checks.forEach(x=>x.addEventListener('change',save));
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const v=b.dataset.copy,o=b.textContent;try{await navigator.clipboard.writeText(v);b.textContent='Copied';setTimeout(()=>b.textContent=o,1000)}catch(e){prompt('Copy this search phrase:',v)}}));
+load();
+</script>
+</body>
+</html>
